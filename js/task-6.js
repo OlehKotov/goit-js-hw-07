@@ -1,26 +1,27 @@
 const createBtn = document.querySelector("button[data-create]");
 const destroyBtn = document.querySelector("button[data-destroy]");
 const boxesContainer = document.querySelector("div#boxes");
+const input = document.querySelector("input");
 
 createBtn.addEventListener("click", createBoxes);
 destroyBtn.addEventListener("click", destroyBoxes);
 
-let size = 30;
 
 function createBoxes() {
   boxesContainer.innerHTML = "";
-  const amount = document.querySelector("input").value;
-  if (amount > 1 && amount < 100) {
+  const amount = Number(input.value);
+  if (amount >= 1 && amount <= 100) {
+    let currentSize = 30;
     for (let i = 0; i < amount; i++) {
       const box = document.createElement("div");
       box.classList.add("js-boxes");
       box.style.backgroundColor = getRandomHexColor();
-      box.style.width = `${size}px`;
-      box.style.height = `${size}px`;
-      size += 10;
+      box.style.width = `${currentSize}px`;
+      box.style.height = `${currentSize}px`;
+      currentSize += 10;
       boxesContainer.append(box);
     }
-    document.querySelector("input").value = "";
+    input.value = "";
   }
 }
 

@@ -26,9 +26,7 @@ const images = [
 ];
 const gallery = document.querySelector(".gallery");
 const markup = images.map(imageTemplate).join("");
-function imageTemplate(obj) {
-  const url = obj.url;
-  const alt = obj.alt;
+function imageTemplate({url, alt}) {
   return `<li class="js-gallery-item">
             <img class="js-item-img" src = "${url}" alt = "${alt}">
           </li>`;
